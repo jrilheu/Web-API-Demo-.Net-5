@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <button onclick="test()">Test</button>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+    <script>
+        function test() {
+            
+            $.ajax({
+                type: "POST",
+                url: "api/token",
+                data: {'': 'Hello Web API'},
+                success: success,
+                contentType: 'application/json'
+            });
+            function success(data) {
+                console.log("new token response: ")
+                console.log(data)
+            }
+        }
+    </script>
+</body>
+</html>
