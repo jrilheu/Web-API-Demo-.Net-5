@@ -9,6 +9,7 @@ function statusChangeCallback(response) {
     if (response.status === 'connected') {
         // Logged into your app and Facebook.
         testAPI();
+        returnTokenLongTerm(response);
     } else if (response.status === 'not_authorized') {
         // The person is logged into Facebook, but not your app.
         document.getElementById('status').innerHTML = 'Please log ' +
@@ -75,4 +76,17 @@ function testAPI() {
         document.getElementById('status').innerHTML =
           'Thanks for logging in, ' + response.name + '!';
     });
+}
+function returnTokenLongTerm(response) {
+    //var tokenShortTerm = "";
+    /*FB.getLoginStatus(function (response) {
+        console.log("por aqui pase yo: getLoginStatus")
+        tokenShortTerm = response.authResponse.accessToken
+    })*/
+    console.log("tokenShortTerm:");
+    console.log(response.authResponse.accessToken);
+    $.post("http://localhost:5626/api/token", { '': response.authResponse.accessToken })
+        .done(function (newToken) {
+            console.log(newToken)
+        });
 }

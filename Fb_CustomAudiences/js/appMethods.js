@@ -67,6 +67,20 @@ function uploadContacts() {
     fbAppPost(payload, '/6042654447994/users', function (response) {
         console.log("added new contacts");
         console.log(response);
-        document.getElementById('status').innerHTML = "added new contacts, check the console.";
+        document.getElementById('status').innerHTML = "new contacts added, check the console.";
     });
 }
+
+/*function returnTokenLongTerm() {
+    var tokenShortTerm = "";
+    FB.getLoginStatus(function (response) {
+        console.log("por aqui pase yo: getLoginStatus")
+        tokenShortTerm = response.authResponse.accessToken
+    })
+    console.log("tokenShortTerm:");
+    console.log(tokenShortTerm);
+    $.post("http://localhost:5626/api/token", { token : tokenShortTerm})
+        .done(function(newToken){
+            console.log(newToken)
+        });
+}*/
